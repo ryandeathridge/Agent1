@@ -1,0 +1,391 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "SCP Data Cleaning Agent API",
+    "description": "Azure Functions API for data cleaning agent within Microsoft Copilot Studio",
+    "version": "1.0.0"
+  },
+  "host": "your-function-app.azurewebsites.net",
+  "basePath": "/api",
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/profile-data": {
+      "post": {
+        "operationId": "profileData",
+        "summary": "Profile data quality and structure",
+        "description": "Analyzes data quality, detects column types, identifies duplicates and encoding issues. Returns comprehensive profile including null rates, cardinality, and quality scores.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["blob_url"],
+              "properties": {
+                "blob_url": {
+                  "type": "string",
+                  "description": "Azure Blob Storage URL of the input data file (parquet, csv, or xlsx)"
+                },
+                "config": {
+                  "type": "object",
+                  "description": "Configuration object with schema, taxonomy, and validation rules"
+                },
+                "config_blob_url": {
+                  "type": "string",
+                  "description": "Alternative: URL to config JSON in blob storage"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile results",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "profile": {
+                  "type": "object",
+                  "properties": {
+                    "total_rows": {"type": "integer"},
+                    "total_columns": {"type": "integer"},
+                    "columns": {"type": "array"},
+                    "duplicate_count": {"type": "integer"},
+                    "near_duplicate_count": {"type": "integer"},
+                    "encoding_issues": {"type": "integer"},
+                    "overall_quality_score": {"type": "number"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clean-deterministic": {
+      "post": {
+        "operationId": "cleanDeterministic",
+        "summary": "Apply rule-based data cleaning",
+        "description": "Applies deterministic cleaning rules: encoding fixes, date/amount normalization, vendor matching, unit standardization, and deduplication. Returns cleaned and flagged datasets.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["blob_url", "config"],
+              "properties": {
+                "blob_url": {
+                  "type": "string",
+                  "description": "Azure Blob Storage URL of the input data"
+                },
+                "config": {
+                  "type": "object",
+                  "description": "Configuration with vendor master, taxonomy, and rules"
+                },
+                "strategy": {
+                  "type": "object",
+                  "description": "Cleaning strategy specifying which fields to clean"
+                },
+                "vendor_dict_url": {
+                  "type": "string",
+                  "description": "URL to vendor dictionary (learned mappings)"
+                },
+                "abbrev_dict_url": {
+                  "type": "string",
+                  "description": "URL to abbreviation dictionary"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cleaning results",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cleaned_blob_url": {"type": "string"},
+                "flagged_blob_url": {"type": "string"},
+                "changes_blob_url": {"type": "string"},
+                "stats": {
+                  "type": "object",
+                  "properties": {
+                    "input_rows": {"type": "integer"},
+                    "cleaned_rows": {"type": "integer"},
+                    "flagged_rows": {"type": "integer"},
+                    "duplicates_removed": {"type": "integer"},
+                    "fields_modified": {"type": "object"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/classify-categories": {
+      "post": {
+        "operationId": "classifyCategories",
+        "summary": "Classify records into categories",
+        "description": "Performs deterministic category classification using keyword matching, supplier inference, and similarity to examples. Records with low confidence are flagged for LLM review.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["records", "taxonomy"],
+              "properties": {
+                "records": {
+                  "type": "array",
+                  "description": "Array of records to classify",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "record_id": {"type": "string"},
+                      "description": {"type": "string"},
+                      "supplier_name": {"type": "string"},
+                      "amount": {"type": "number"},
+                      "unit": {"type": "string"}
+                    }
+                  }
+                },
+                "taxonomy": {
+                  "type": "object",
+                  "description": "Nested category taxonomy (L1 > L2 > L3)"
+                },
+                "examples": {
+                  "type": "array",
+                  "description": "Few-shot classification examples",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": {"type": "string"},
+                      "category": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Classification results",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "classifications": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "record_id": {"type": "string"},
+                      "category_l1": {"type": "string"},
+                      "category_l2": {"type": "string"},
+                      "category_l3": {"type": "string"},
+                      "confidence": {"type": "number"},
+                      "needs_llm": {"type": "boolean"},
+                      "best_guess": {"type": "string"}
+                    }
+                  }
+                },
+                "stats": {
+                  "type": "object",
+                  "properties": {
+                    "auto_classified": {"type": "integer"},
+                    "needs_llm": {"type": "integer"},
+                    "total": {"type": "integer"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/validate-output": {
+      "post": {
+        "operationId": "validateOutput",
+        "summary": "Validate cleaned data",
+        "description": "Validates cleaned data against schema, checks cross-record consistency, and detects outliers. Returns detailed validation report with errors, warnings, and statistics.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["blob_url", "config"],
+              "properties": {
+                "blob_url": {
+                  "type": "string",
+                  "description": "Azure Blob Storage URL of cleaned data"
+                },
+                "config": {
+                  "type": "object",
+                  "description": "Configuration with schema and validation rules"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation results",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "is_valid": {"type": "boolean"},
+                "total_records": {"type": "integer"},
+                "error_count": {"type": "integer"},
+                "warning_count": {"type": "integer"},
+                "schema_errors": {"type": "array"},
+                "consistency_issues": {"type": "array"},
+                "outliers": {"type": "array"},
+                "stats": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/format-output": {
+      "post": {
+        "operationId": "formatOutput",
+        "summary": "Format data for download",
+        "description": "Formats cleaned data as Excel or CSV with optional changes log and summary sheet. Returns download URL with 24-hour expiry.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["blob_url"],
+              "properties": {
+                "blob_url": {
+                  "type": "string",
+                  "description": "Azure Blob Storage URL of cleaned data"
+                },
+                "format": {
+                  "type": "string",
+                  "enum": ["xlsx", "csv"],
+                  "default": "xlsx",
+                  "description": "Output format"
+                },
+                "include_changes_log": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Include changes log in output"
+                },
+                "changes_blob_url": {
+                  "type": "string",
+                  "description": "URL to changes log data"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Download information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "download_url": {"type": "string"},
+                "expires": {"type": "string"},
+                "format": {"type": "string"},
+                "file_size_mb": {"type": "number"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update-learning-state": {
+      "post": {
+        "operationId": "updateLearningState",
+        "summary": "Update learning dictionaries",
+        "description": "Updates SharePoint-hosted vendor dictionary, abbreviation dictionary, classification examples, and agent instructions. Makes the agent self-improving over time.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "vendor_mappings": {
+                  "type": "array",
+                  "description": "New vendor name mappings to add",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "dirty": {"type": "string"},
+                      "canonical": {"type": "string"},
+                      "id": {"type": "string"}
+                    }
+                  }
+                },
+                "abbreviations": {
+                  "type": "array",
+                  "description": "New abbreviation expansions",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "abbrev": {"type": "string"},
+                      "expansion": {"type": "string"}
+                    }
+                  }
+                },
+                "classification_examples": {
+                  "type": "array",
+                  "description": "New classification examples",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": {"type": "string"},
+                      "l1": {"type": "string"},
+                      "l2": {"type": "string"},
+                      "l3": {"type": "string"},
+                      "verified": {"type": "boolean"}
+                    }
+                  }
+                },
+                "instructions_append": {
+                  "type": "string",
+                  "description": "New instruction to append to agent instructions"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update results",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "updated": {"type": "boolean"},
+                "new_vendor_mappings": {"type": "integer"},
+                "new_abbreviations": {"type": "integer"},
+                "new_examples": {"type": "integer"},
+                "instructions_updated": {"type": "boolean"},
+                "total_vendor_dictionary_size": {"type": "integer"},
+                "total_abbreviation_dictionary_size": {"type": "integer"},
+                "total_examples_size": {"type": "integer"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
