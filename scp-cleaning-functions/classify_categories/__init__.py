@@ -42,14 +42,23 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         
         if examples:
             example_texts = [ex.get('description', '') for ex in examples]
-            example_categories = [
-                {
-                    'l1': ex.get('l1'),
-                    'l2': ex.get('l2'),
-                    'l3': ex.get('l3')
-                }
-                for ex in examples
-            ]
+            example_categories = []
+            for ex in examples:
+                if ex.get('l1'):
+                    example_categories.append({
+                        'l1': ex.get('l1'),
+                        'l2': ex.get('l2'),
+                        'l3': ex.get('l3')
+                    })
+                elif ex.get('category'):
+                    parts = [p.strip() for p in ex['category'].split('>')]
+                    example_categories.append({
+                        'l1': parts[0] if len(parts) > 0 else None,
+                        'l2': parts[1] if len(parts) > 1 else None,
+                        'l3': parts[2] if len(parts) > 2 else None
+                    })
+                else:
+                    example_categories.append({'l1': None, 'l2': None, 'l3': None})
             
             if example_texts:
                 example_vectorizer = TfidfVectorizer(max_features=500, ngram_range=(1, 2))

@@ -41,7 +41,7 @@ def check_consistency(df: pd.DataFrame, config: dict) -> List[dict]:
                 issues.append({
                     'check_name': 'vendor_id_consistency',
                     'severity': 'error',
-                    'description': f"Supplier '{supplier_name}' has {len(ids)} different IDs: {', '.join(ids)}",
+                    'description': f"Supplier '{supplier_name}' has {len(ids)} different IDs: {', '.join(str(i) for i in ids)}",
                     'affected_record_ids': affected[:10]
                 })
     

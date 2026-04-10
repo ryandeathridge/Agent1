@@ -4,7 +4,7 @@ import io
 import json
 import pandas as pd
 from azure.storage.blob import BlobServiceClient, BlobClient, generate_blob_sas, BlobSasPermissions
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 def _get_blob_service_client() -> BlobServiceClient:
@@ -115,7 +115,7 @@ def generate_sas_url(blob_name: str, expiry_hours: int = 24) -> str:
         blob_name=blob_name,
         account_key=account_key,
         permission=BlobSasPermissions(read=True),
-        expiry=datetime.utcnow() + timedelta(hours=expiry_hours)
+        expiry=datetime.now(timezone.utc) + timedelta(hours=expiry_hours)
     )
     
     return f"{blob_client.url}?{sas_token}"

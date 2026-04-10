@@ -165,7 +165,8 @@ def validate_dataframe(df: pd.DataFrame, config: dict) -> ValidationResult:
     error_count = len(all_errors)
     total_records = len(df)
     
-    schema_valid_pct = ((total_records - error_count) / total_records * 100) if total_records > 0 else 0
+    records_with_errors = len({e['record_id'] for e in all_errors})
+    schema_valid_pct = ((total_records - records_with_errors) / total_records * 100) if total_records > 0 else 0
     
     return ValidationResult(
         is_valid=(error_count == 0),
