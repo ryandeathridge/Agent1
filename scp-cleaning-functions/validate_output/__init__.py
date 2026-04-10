@@ -51,10 +51,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         
         schema_valid_pct = validation_result.stats.get('schema_valid_pct', 0)
         
-        consistent_records = total_records - len([
-            issue for issue in consistency_issues 
-            if issue.get('severity') == 'error'
-        ])
+        affected_by_errors = set()
+        for issue in consistency_issues:
+            if issue.get('severity') == 'error':
+                for rid in issue.get('affected_record_ids', []):
+                    affected_by_errors.add(rid)
+        consistent_records = total_records - len(affected_by_errors)
         consistent_pct = (consistent_records / total_records * 100) if total_records > 0 else 0
         
         outlier_pct = (len(outliers) / total_records * 100) if total_records > 0 else 0

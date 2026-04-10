@@ -65,7 +65,8 @@ def normalise_amount(value, expected_currency: str = "AUD") -> Tuple[Optional[fl
         if is_negative:
             amount = -amount
         
-        if '.' not in str(value).replace(',', '') and amount > 10000:
+        original_str = str(value)
+        if '.' not in original_str and ',' not in original_str and amount > 10000:
             confidence = 0.5
         
         return amount, confidence

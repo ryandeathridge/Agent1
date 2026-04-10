@@ -43,6 +43,16 @@ def normalise_date(value: str, locale_hint: str = "AU") -> Tuple[Optional[str], 
         if dt:
             return dt.strftime("%Y-%m-%d"), 1.0
     
+    if isinstance(value, str) and re.match(r'^\d+\.?\d*$', value_str):
+        try:
+            numeric_val = float(value_str)
+            if 1000 < numeric_val < 200000:
+                dt = _parse_excel_serial_date(numeric_val)
+                if dt and 1900 <= dt.year <= 2100:
+                    return dt.strftime("%Y-%m-%d"), 1.0
+        except (ValueError, OverflowError):
+            pass
+    
     if re.match(r'^\d{4}-\d{2}-\d{2}$', value_str):
         try:
             datetime.strptime(value_str, "%Y-%m-%d")
