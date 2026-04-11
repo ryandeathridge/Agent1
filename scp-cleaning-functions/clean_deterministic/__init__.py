@@ -11,6 +11,7 @@ from shared.amount_normaliser import normalise_amount
 from shared.unit_standardiser import standardise_unit
 from shared.vendor_matcher import VendorMatcher
 from shared.deduplicator import Deduplicator
+from shared.triangulator import triangulate_dataframe
 from shared.models import FieldChange
 
 
@@ -127,6 +128,29 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     fields_modified[amount_col] = modified_count
                     logging.info(f"Normalised {modified_count} amounts in {amount_col}")
         
+        # Stage 3: Triangulate amount, quantity, and unit_price
+        triangulated_df, human_review_df, triangulation_changes = triangulate_dataframe(
+            df,
+            amount_col='amount',
+            quantity_col='quantity',
+            unit_price_col='unit_price'
+        )
+        
+        # Update df with triangulated values
+        df = triangulated_df
+        
+        # Add triangulation changes to changes_log
+        changes_log.extend(triangulation_changes)
+        
+        # Track triangulation stats
+        if len(triangulation_changes) > 0:
+            triangulation_count = len(triangulation_changes)
+            fields_modified['triangulated_fields'] = triangulation_count
+            logging.info(f"Derived {triangulation_count} values via triangulation")
+        
+        if len(human_review_df) > 0:
+            logging.info(f"Flagged {len(human_review_df)} records for human review (2+ missing fields)")
+        
         if 'unit' in df.columns:
             modified_count = 0
             for idx in df.index:
@@ -204,6 +228,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         
         cleaned_blob_url = upload_dataframe(cleaned_df, f"cleaned_batch_{run_id}.parquet")
         flagged_blob_url = upload_dataframe(flagged_df, f"flagged_batch_{run_id}.parquet") if len(flagged_df) > 0 else None
+        human_review_blob_url = upload_dataframe(human_review_df, f"human_review_{run_id}.parquet") if len(human_review_df) > 0 else None
         
         changes_df = pd.DataFrame(changes_log)
         changes_blob_url = upload_dataframe(changes_df, f"changes_log_{run_id}.parquet") if len(changes_df) > 0 else None
@@ -212,11 +237,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             json.dumps({
                 "cleaned_blob_url": cleaned_blob_url,
                 "flagged_blob_url": flagged_blob_url,
+                "human_review_blob_url": human_review_blob_url,
                 "changes_blob_url": changes_blob_url,
                 "stats": {
                     "input_rows": input_rows,
                     "cleaned_rows": len(cleaned_df),
                     "flagged_rows": len(flagged_df),
+                    "human_review_rows": len(human_review_df),
                     "duplicates_removed": duplicates_removed,
                     "fields_modified": fields_modified
                 }
