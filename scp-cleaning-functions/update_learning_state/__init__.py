@@ -1,12 +1,12 @@
-"""Update learning state function - updates SharePoint dictionaries and instructions."""
+"""Update learning state function - updates blob storage dictionaries and instructions."""
 import logging
 import json
 import azure.functions as func
 from shared.sharepoint_helpers import (
-    read_sharepoint_json,
-    write_sharepoint_json,
-    read_sharepoint_text,
-    write_sharepoint_text
+    read_config_json,
+    write_config_json,
+    read_config_text,
+    write_config_text
 )
 
 
@@ -36,7 +36,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         
         if vendor_mappings:
             try:
-                vendor_dict = read_sharepoint_json('SCP/vendor_dictionary.json')
+                vendor_dict = read_config_json('vendor_dictionary.json')
             except Exception:
                 vendor_dict = {}
             
@@ -49,12 +49,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     new_vendor_mappings += 1
             
             if new_vendor_mappings > 0:
-                write_sharepoint_json('SCP/vendor_dictionary.json', vendor_dict)
+                write_config_json('vendor_dictionary.json', vendor_dict)
                 logging.info(f"Added {new_vendor_mappings} new vendor mappings")
         
         if abbreviations:
             try:
-                abbrev_dict = read_sharepoint_json('SCP/abbreviation_dictionary.json')
+                abbrev_dict = read_config_json('abbreviation_dictionary.json')
             except Exception:
                 abbrev_dict = {}
             
@@ -67,12 +67,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     new_abbreviations += 1
             
             if new_abbreviations > 0:
-                write_sharepoint_json('SCP/abbreviation_dictionary.json', abbrev_dict)
+                write_config_json('abbreviation_dictionary.json', abbrev_dict)
                 logging.info(f"Added {new_abbreviations} new abbreviations")
         
         if classification_examples:
             try:
-                examples_list = read_sharepoint_json('SCP/few_shot_examples.json')
+                examples_list = read_config_json('few_shot_examples.json')
                 if not isinstance(examples_list, list):
                     examples_list = []
             except Exception:
@@ -95,12 +95,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                     existing_descriptions.add(description)
             
             if new_examples > 0:
-                write_sharepoint_json('SCP/few_shot_examples.json', examples_list)
+                write_config_json('few_shot_examples.json', examples_list)
                 logging.info(f"Added {new_examples} new classification examples")
         
         if instructions_append:
             try:
-                instructions = read_sharepoint_text('SCP/agent_instructions.md')
+                instructions = read_config_text('agent_instructions.md')
             except Exception:
                 instructions = """# Data Cleaning Agent Instructions
 
@@ -124,24 +124,24 @@ You are a procurement data cleaning agent. You orchestrate a pipeline that clean
             
             instructions += f'\n- {instructions_append}\n'
             
-            write_sharepoint_text('SCP/agent_instructions.md', instructions)
+            write_config_text('agent_instructions.md', instructions)
             instructions_updated = True
             logging.info("Updated agent instructions")
         
         try:
-            vendor_dict = read_sharepoint_json('SCP/vendor_dictionary.json')
+            vendor_dict = read_config_json('vendor_dictionary.json')
             total_vendor_dictionary_size = len(vendor_dict)
         except Exception:
             total_vendor_dictionary_size = 0
         
         try:
-            abbrev_dict = read_sharepoint_json('SCP/abbreviation_dictionary.json')
+            abbrev_dict = read_config_json('abbreviation_dictionary.json')
             total_abbreviation_dictionary_size = len(abbrev_dict)
         except Exception:
             total_abbreviation_dictionary_size = 0
         
         try:
-            examples_list = read_sharepoint_json('SCP/few_shot_examples.json')
+            examples_list = read_config_json('few_shot_examples.json')
             total_examples_size = len(examples_list) if isinstance(examples_list, list) else 0
         except Exception:
             total_examples_size = 0

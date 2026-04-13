@@ -23,7 +23,7 @@ class VendorMatcher:
     
     def __init__(self, vendor_master: List[dict], vendor_dictionary: Optional[dict] = None):
         """vendor_master: list of {supplier_name, supplier_id, ...} from config
-        vendor_dictionary: dict of {dirty_name: canonical_name} from SharePoint
+        vendor_dictionary: dict of {dirty_name: canonical_name} from blob storage
         """
         self.vendor_master = vendor_master
         self.vendor_dictionary = vendor_dictionary or {}
