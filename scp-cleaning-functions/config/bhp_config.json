@@ -1,0 +1,110 @@
+{
+  "schema": [
+    {"name": "record_id", "type": "string", "required": true},
+    {"name": "date", "type": "date", "required": true},
+    {"name": "financial_year", "type": "string", "required": false},
+    {"name": "invoice_number", "type": "string", "required": false},
+    {"name": "purchase_order", "type": "string", "required": false},
+    {"name": "description", "type": "string", "required": true},
+    {"name": "quantity", "type": "numeric", "required": false},
+    {"name": "unit", "type": "string", "required": false},
+    {"name": "unit_price", "type": "numeric", "required": false},
+    {"name": "amount", "type": "numeric", "required": true},
+    {"name": "currency", "type": "string", "required": true},
+    {"name": "amount_usd", "type": "numeric", "required": false},
+    {"name": "supplier_name", "type": "string", "required": true},
+    {"name": "supplier_id", "type": "string", "required": false},
+    {"name": "supplier_abn", "type": "string", "required": false},
+    {"name": "cost_centre", "type": "string", "required": false},
+    {"name": "site", "type": "string", "required": true},
+    {"name": "business_unit", "type": "string", "required": true},
+    {"name": "category_l1", "type": "string", "required": true},
+    {"name": "category_l2", "type": "string", "required": false},
+    {"name": "category_l3", "type": "string", "required": false},
+    {"name": "payment_terms", "type": "string", "required": false},
+    {"name": "status", "type": "string", "required": false}
+  ],
+  "category_taxonomy": {
+    "Energy & Fuel": {
+      "Diesel": ["Bulk diesel delivery", "Diesel storage", "Fuel management systems"],
+      "Electricity": ["Grid electricity", "On-site generation", "Renewable PPAs", "Transmission charges"],
+      "Natural Gas": ["Gas processing", "LNG supply", "Pipeline gas"]
+    },
+    "Equipment & Parts": {
+      "Electrical & Instrumentation": ["Cables & wiring", "PLCs", "Sensors & instrumentation", "Switchgear", "Transformers"],
+      "Fixed Plant": ["Conveyor components", "Crusher parts", "Mill liners", "Pump parts", "Screen media"],
+      "Mobile Equipment": ["Dozer parts", "Excavator parts", "Grader parts", "Haul truck parts", "Light vehicle fleet"]
+    },
+    "Facilities & Administration": {
+      "Insurance": ["Liability insurance", "Marine cargo", "Property insurance", "Workers comp"],
+      "Office & Administration": ["Corporate travel", "Furniture", "Office supplies", "Printing & copying"],
+      "Utilities": ["Internet services", "Sewage", "Telecommunications", "Water supply"]
+    },
+    "Maintenance & Repair": {
+      "Breakdown & Emergency": ["Crane hire", "Emergency repair", "Mechanical contractors", "Welding services"],
+      "Building & Civil": ["Building maintenance", "Concrete", "Earthworks", "Road maintenance"],
+      "Planned Maintenance": ["Condition monitoring", "Lubrication services", "Predictive maintenance", "Shutdown services"]
+    },
+    "Mining Services & Contractors": {
+      "Drill & Blast": ["Blast design services", "Drill rig hire", "Drilling consumables", "Explosives & detonators"],
+      "Load & Haul": ["Excavator hire", "Loader hire", "Operator labour", "Truck hire"],
+      "Mine Planning & Technical": ["Geological consulting", "Geotechnical services", "Mine planning software", "Survey services"]
+    },
+    "People & Labour": {
+      "Contract Labour": ["Semi-skilled operators", "Skilled trades (electrical, mechanical, boilermaking)", "Unskilled labour"],
+      "FIFO & Accommodation": ["Camp accommodation", "Catering", "Charter flights", "Village management"],
+      "Recruitment & Training": ["Competency assessments", "Recruitment agencies", "Safety inductions", "Training providers"]
+    },
+    "Professional Services": {
+      "Engineering & Design": ["Electrical engineering", "Process engineering", "Project management", "Structural engineering"],
+      "Environmental & Compliance": ["Environmental monitoring", "Rehabilitation services", "Waste management", "Water treatment"],
+      "IT & Technology": ["Cloud services", "Cybersecurity", "Hardware", "Network infrastructure", "Software licences"],
+      "Legal & Advisory": ["Audit services", "Legal counsel", "Management consulting", "Tax advisory"]
+    },
+    "Raw Materials & Consumables": {
+      "Chemical Reagents": ["Ammonia", "Flocculants", "Flotation reagents", "Lime", "Sulphuric acid"],
+      "Grinding Media": ["Rod charge", "SAG mill liners", "Steel balls"],
+      "Structural Steel & Fabrication": ["Custom fabrication", "Pipe & fittings", "Steel plate", "Structural steel"],
+      "Tyres & Rubber": ["Conveyor belting", "Haul truck tyres", "Light vehicle tyres", "Rubber lining"]
+    },
+    "Safety & Environment": {
+      "Emergency Response": ["Emergency vehicles", "Fire suppression", "First aid supplies", "Rescue equipment"],
+      "Environmental Management": ["Dust suppression", "Monitoring equipment", "Rehabilitation materials", "Tailings management"],
+      "PPE & Safety Equipment": ["Fall protection", "Hard hats & helmets", "Hi-vis clothing", "Respirators", "Safety boots"]
+    },
+    "Transport & Logistics": {
+      "Rail": ["Port handling", "Rail haulage", "Rolling stock maintenance", "Track maintenance"],
+      "Road Transport": ["Bulk material haulage", "Courier services", "General freight", "Oversize/overmass loads"],
+      "Shipping & Port": ["Demurrage", "Port fees", "Stevedoring", "Vessel charter"]
+    }
+  },
+  "top_20_suppliers": [
+    {"supplier_name": "Caterpillar", "supplier_id": "SUP-00001"},
+    {"supplier_name": "Komatsu", "supplier_id": "SUP-00002"},
+    {"supplier_name": "Orica", "supplier_id": "SUP-00003"},
+    {"supplier_name": "Shell", "supplier_id": "SUP-00004"},
+    {"supplier_name": "BP", "supplier_id": "SUP-00005"},
+    {"supplier_name": "Weir Group", "supplier_id": "SUP-00006"},
+    {"supplier_name": "Metso Outotec", "supplier_id": "SUP-00007"},
+    {"supplier_name": "Sandvik", "supplier_id": "SUP-00008"},
+    {"supplier_name": "Bridgestone", "supplier_id": "SUP-00009"},
+    {"supplier_name": "Michelin", "supplier_id": "SUP-00010"},
+    {"supplier_name": "ABB", "supplier_id": "SUP-00011"},
+    {"supplier_name": "Siemens", "supplier_id": "SUP-00012"},
+    {"supplier_name": "Schneider Electric", "supplier_id": "SUP-00013"},
+    {"supplier_name": "Downer EDI", "supplier_id": "SUP-00014"},
+    {"supplier_name": "Thiess", "supplier_id": "SUP-00015"},
+    {"supplier_name": "CIMIC", "supplier_id": "SUP-00016"},
+    {"supplier_name": "Sodexo", "supplier_id": "SUP-00017"},
+    {"supplier_name": "Compass Group", "supplier_id": "SUP-00018"},
+    {"supplier_name": "KPMG", "supplier_id": "SUP-00019"},
+    {"supplier_name": "Deloitte", "supplier_id": "SUP-00020"}
+  ],
+  "units": ["EA", "L", "KL", "T", "KG", "M", "M2", "M3", "HR", "DAY", "WK", "MTH", "SET", "ROLL", "DRUM", "LOT", "LS"],
+  "payment_terms": ["Net 30", "Net 45", "Net 60", "Net 90", "Net 14", "COD", "Prepaid", "Progress"],
+  "valid_currencies": ["AUD", "USD", "CLP"],
+  "date_range": {
+    "min": "2024-04-01",
+    "max": "2026-03-31"
+  }
+}
