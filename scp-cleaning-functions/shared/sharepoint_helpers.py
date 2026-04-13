@@ -1,145 +1,87 @@
-"""Reads/writes the self-updating instruction files and dictionaries on SharePoint."""
+"""Reads/writes the self-updating instruction files and dictionaries in Azure Blob Storage."""
 import os
 import json
-import requests
-from typing import Optional
+import io
+from typing import Optional, Union
+from azure.storage.blob import BlobServiceClient, BlobClient
+from azure.core.exceptions import ResourceNotFoundError
 
 
-def get_access_token() -> str:
-    """Get OAuth2 token for Microsoft Graph API using client credentials."""
-    tenant_id = os.environ.get("SHAREPOINT_TENANT_ID")
-    client_id = os.environ.get("SHAREPOINT_CLIENT_ID")
-    client_secret = os.environ.get("SHAREPOINT_CLIENT_SECRET")
-    
-    if not all([tenant_id, client_id, client_secret]):
-        raise ValueError("SharePoint credentials not configured in environment variables")
-    
-    token_url = f"https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"
-    
-    data = {
-        "client_id": client_id,
-        "client_secret": client_secret,
-        "scope": "https://graph.microsoft.com/.default",
-        "grant_type": "client_credentials"
-    }
-    
-    response = requests.post(token_url, data=data)
-    response.raise_for_status()
-    
-    return response.json()["access_token"]
+def _get_blob_service_client() -> BlobServiceClient:
+    """Get blob service client from environment variables."""
+    connection_string = os.environ.get("AZURE_STORAGE_CONNECTION_STRING")
+    if not connection_string:
+        raise ValueError("AZURE_STORAGE_CONNECTION_STRING environment variable not set")
+    return BlobServiceClient.from_connection_string(connection_string)
 
 
-def _get_file_url(file_path: str) -> str:
-    """Build Microsoft Graph API URL for a file."""
-    site_id = os.environ.get("SHAREPOINT_SITE_ID")
-    if not site_id:
-        raise ValueError("SHAREPOINT_SITE_ID environment variable not set")
-    
-    return f"https://graph.microsoft.com/v1.0/sites/{site_id}/drive/root:/{file_path}"
+def _get_config_container_name() -> str:
+    """Get config container name from environment variables."""
+    return os.environ.get("CONFIG_CONTAINER_NAME", "config")
 
 
-def read_sharepoint_json(file_path: str) -> dict:
-    """Read a JSON file from SharePoint document library.
+def read_config_json(file_path: str) -> Union[dict, list]:
+    """Read a JSON file from the config blob container.
     
-    file_path is relative to the site's default document library, 
-    e.g. 'SCP/vendor_dictionary.json'
+    file_path is relative to the config container, e.g. 'vendor_dictionary.json'
+    Returns empty dict {} if file not found (for dict files) or empty list [] (for list files).
     """
-    access_token = get_access_token()
-    file_url = _get_file_url(file_path)
+    blob_service_client = _get_blob_service_client()
+    container_name = _get_config_container_name()
     
-    headers = {
-        "Authorization": f"Bearer {access_token}"
-    }
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=file_path)
     
-    response = requests.get(file_url, headers=headers)
-    
-    if response.status_code == 404:
+    try:
+        stream = io.BytesIO()
+        blob_client.download_blob().readinto(stream)
+        stream.seek(0)
+        content = json.loads(stream.read().decode('utf-8'))
+        return content
+    except ResourceNotFoundError:
+        if 'examples' in file_path:
+            return []
         return {}
-    
-    response.raise_for_status()
-    
-    download_url = response.json().get("@microsoft.graph.downloadUrl")
-    if not download_url:
-        raise ValueError(f"Could not get download URL for {file_path}")
-    
-    content_response = requests.get(download_url)
-    content_response.raise_for_status()
-    
-    return content_response.json()
+    except Exception as e:
+        raise ValueError(f"Error reading config file {file_path}: {str(e)}")
 
 
-def write_sharepoint_json(file_path: str, data: dict) -> None:
-    """Write/overwrite a JSON file on SharePoint."""
-    access_token = get_access_token()
-    file_url = f"{_get_file_url(file_path)}:/content"
+def write_config_json(file_path: str, data: Union[dict, list]) -> None:
+    """Write/overwrite a JSON file in the config blob container."""
+    blob_service_client = _get_blob_service_client()
+    container_name = _get_config_container_name()
     
-    headers = {
-        "Authorization": f"Bearer {access_token}",
-        "Content-Type": "application/json"
-    }
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=file_path)
     
-    json_content = json.dumps(data, indent=2)
-    
-    response = requests.put(file_url, headers=headers, data=json_content.encode('utf-8'))
-    response.raise_for_status()
+    json_str = json.dumps(data, indent=2)
+    blob_client.upload_blob(json_str, overwrite=True)
 
 
-def read_sharepoint_text(file_path: str) -> str:
-    """Read a text/markdown file from SharePoint."""
-    access_token = get_access_token()
-    file_url = _get_file_url(file_path)
+def read_config_text(file_path: str) -> str:
+    """Read a text/markdown file from the config blob container.
     
-    headers = {
-        "Authorization": f"Bearer {access_token}"
-    }
-    
-    response = requests.get(file_url, headers=headers)
-    
-    if response.status_code == 404:
-        return ""
-    
-    response.raise_for_status()
-    
-    download_url = response.json().get("@microsoft.graph.downloadUrl")
-    if not download_url:
-        raise ValueError(f"Could not get download URL for {file_path}")
-    
-    content_response = requests.get(download_url)
-    content_response.raise_for_status()
-    
-    return content_response.text
-
-
-def write_sharepoint_text(file_path: str, content: str) -> None:
-    """Write/overwrite a text/markdown file on SharePoint."""
-    access_token = get_access_token()
-    file_url = f"{_get_file_url(file_path)}:/content"
-    
-    headers = {
-        "Authorization": f"Bearer {access_token}",
-        "Content-Type": "text/plain"
-    }
-    
-    response = requests.put(file_url, headers=headers, data=content.encode('utf-8'))
-    response.raise_for_status()
-
-
-def append_to_sharepoint_json(file_path: str, new_entries: dict, merge_key: str) -> int:
-    """Read existing JSON, merge new entries (by merge_key to avoid duplicates), write back.
-    
-    Returns count of new entries added.
+    Returns empty string if file not found.
     """
-    existing_data = read_sharepoint_json(file_path)
+    blob_service_client = _get_blob_service_client()
+    container_name = _get_config_container_name()
     
-    if not existing_data:
-        existing_data = {}
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=file_path)
     
-    new_count = 0
-    for key, value in new_entries.items():
-        if key not in existing_data:
-            existing_data[key] = value
-            new_count += 1
+    try:
+        stream = io.BytesIO()
+        blob_client.download_blob().readinto(stream)
+        stream.seek(0)
+        return stream.read().decode('utf-8')
+    except ResourceNotFoundError:
+        return ""
+    except Exception as e:
+        raise ValueError(f"Error reading config file {file_path}: {str(e)}")
+
+
+def write_config_text(file_path: str, content: str) -> None:
+    """Write/overwrite a text/markdown file in the config blob container."""
+    blob_service_client = _get_blob_service_client()
+    container_name = _get_config_container_name()
     
-    write_sharepoint_json(file_path, existing_data)
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=file_path)
     
-    return new_count
+    blob_client.upload_blob(content.encode('utf-8'), overwrite=True)
