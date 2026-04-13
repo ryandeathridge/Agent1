@@ -1,0 +1,1062 @@
+[
+  {
+    "canonical_name": "KPMG",
+    "common_abbreviations": ["KPMG", "KPMG LLP", "KPMG International", "Klynveld Peat Marwick Goerdeler"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Deloitte",
+    "common_abbreviations": ["Deloitte", "Deloitte Touche Tohmatsu", "Deloitte LLP", "DTT", "Deloitte & Touche"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "PricewaterhouseCoopers",
+    "common_abbreviations": ["PwC", "PricewaterhouseCoopers", "PWC", "Price Waterhouse Coopers", "PricewaterhouseCoopers LLP"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Ernst & Young",
+    "common_abbreviations": ["EY", "Ernst & Young", "Ernst and Young", "E&Y", "EY LLP"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "McKinsey & Company",
+    "common_abbreviations": ["McKinsey", "McKinsey & Company", "McKinsey and Company", "McKinsey & Co"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Boston Consulting Group",
+    "common_abbreviations": ["BCG", "Boston Consulting Group", "Boston Consulting"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Bain & Company",
+    "common_abbreviations": ["Bain", "Bain & Company", "Bain and Company", "Bain & Co"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Accenture",
+    "common_abbreviations": ["Accenture", "Accenture PLC", "Accenture LLP"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Microsoft Corporation",
+    "common_abbreviations": ["Microsoft", "Microsoft Corp", "Microsoft Corporation", "MSFT", "MS"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "SAP",
+    "common_abbreviations": ["SAP", "SAP SE", "SAP AG", "Systems Applications and Products"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Oracle Corporation",
+    "common_abbreviations": ["Oracle", "Oracle Corp", "Oracle Corporation"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Salesforce",
+    "common_abbreviations": ["Salesforce", "Salesforce.com", "SFDC", "Salesforce Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "ServiceNow",
+    "common_abbreviations": ["ServiceNow", "Service Now", "ServiceNow Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Adobe",
+    "common_abbreviations": ["Adobe", "Adobe Inc", "Adobe Systems"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Atlassian",
+    "common_abbreviations": ["Atlassian", "Atlassian Pty Ltd", "Atlassian Corporation"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "IBM",
+    "common_abbreviations": ["IBM", "International Business Machines", "IBM Corporation", "Big Blue"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Amazon Web Services",
+    "common_abbreviations": ["AWS", "Amazon Web Services", "Amazon AWS"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Google Cloud",
+    "common_abbreviations": ["Google Cloud", "GCP", "Google Cloud Platform", "Google LLC"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Cisco Systems",
+    "common_abbreviations": ["Cisco", "Cisco Systems", "Cisco Systems Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Dell Technologies",
+    "common_abbreviations": ["Dell", "Dell Technologies", "Dell Inc", "Dell EMC"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Hewlett Packard Enterprise",
+    "common_abbreviations": ["HPE", "Hewlett Packard Enterprise", "HP Enterprise"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "VMware",
+    "common_abbreviations": ["VMware", "VMWare Inc", "VM Ware"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Workday",
+    "common_abbreviations": ["Workday", "Workday Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Toll Holdings",
+    "common_abbreviations": ["Toll", "Toll Holdings", "Toll Group", "Toll Logistics"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "Linfox",
+    "common_abbreviations": ["Linfox", "Linfox Logistics", "Linfox Pty Ltd"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "DHL",
+    "common_abbreviations": ["DHL", "DHL Express", "DHL International", "Dalsey Hillblom Lynn"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "FedEx",
+    "common_abbreviations": ["FedEx", "Federal Express", "FedEx Corporation"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "TNT",
+    "common_abbreviations": ["TNT", "TNT Express", "TNT Australia"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "StarTrack",
+    "common_abbreviations": ["StarTrack", "Star Track", "StarTrack Express"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "Brambles",
+    "common_abbreviations": ["Brambles", "Brambles Limited", "CHEP"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "UPS",
+    "common_abbreviations": ["UPS", "United Parcel Service", "UPS Inc"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "Maersk",
+    "common_abbreviations": ["Maersk", "AP Moller Maersk", "Maersk Line"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "DB Schenker",
+    "common_abbreviations": ["Schenker", "DB Schenker", "Schenker Australia"],
+    "typical_category_l1": "Logistics & Freight"
+  },
+  {
+    "canonical_name": "BOC Gas",
+    "common_abbreviations": ["BOC", "BOC Gas", "BOC Limited", "BOC Australia"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "Air Liquide",
+    "common_abbreviations": ["Air Liquide", "Air Liquide Australia"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "Linde",
+    "common_abbreviations": ["Linde", "Linde Gas", "Linde plc", "Praxair"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "BASF",
+    "common_abbreviations": ["BASF", "BASF SE", "BASF Australia"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "Dow Chemical",
+    "common_abbreviations": ["Dow", "Dow Chemical", "Dow Inc", "DowDuPont"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "DuPont",
+    "common_abbreviations": ["DuPont", "Du Pont", "DuPont de Nemours"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "Orica",
+    "common_abbreviations": ["Orica", "Orica Limited", "Orica Australia"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "Incitec Pivot",
+    "common_abbreviations": ["Incitec Pivot", "Incitec", "IPL"],
+    "typical_category_l1": "Industrial Gas & Chemicals"
+  },
+  {
+    "canonical_name": "Officeworks",
+    "common_abbreviations": ["Officeworks", "Office Works"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "Bunnings",
+    "common_abbreviations": ["Bunnings", "Bunnings Warehouse", "Bunnings Trade"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "Staples",
+    "common_abbreviations": ["Staples", "Staples Inc", "Staples Australia"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "CBRE",
+    "common_abbreviations": ["CBRE", "CB Richard Ellis", "CBRE Group"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "JLL",
+    "common_abbreviations": ["JLL", "Jones Lang LaSalle", "Jones Lang Lasalle"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "Cushman & Wakefield",
+    "common_abbreviations": ["Cushman & Wakefield", "Cushman and Wakefield", "C&W"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "ISS Facility Services",
+    "common_abbreviations": ["ISS", "ISS Facility Services", "ISS Group"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "Sodexo",
+    "common_abbreviations": ["Sodexo", "Sodexho"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "Compass Group",
+    "common_abbreviations": ["Compass Group", "Compass", "Eurest"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "QBE Insurance",
+    "common_abbreviations": ["QBE", "QBE Insurance", "QBE Group"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "Allianz",
+    "common_abbreviations": ["Allianz", "Allianz SE", "Allianz Australia"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "Zurich Insurance",
+    "common_abbreviations": ["Zurich", "Zurich Insurance", "Zurich Insurance Group"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "AIG",
+    "common_abbreviations": ["AIG", "American International Group", "AIG Australia"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "Marsh",
+    "common_abbreviations": ["Marsh", "Marsh & McLennan", "Marsh McLennan"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "Aon",
+    "common_abbreviations": ["Aon", "Aon plc", "Aon Corporation"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "Willis Towers Watson",
+    "common_abbreviations": ["Willis Towers Watson", "WTW", "Willis", "Towers Watson"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "Chubb",
+    "common_abbreviations": ["Chubb", "Chubb Insurance", "Chubb Limited"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "IAG",
+    "common_abbreviations": ["IAG", "Insurance Australia Group", "NRMA Insurance"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "Suncorp",
+    "common_abbreviations": ["Suncorp", "Suncorp Group", "Suncorp Insurance"],
+    "typical_category_l1": "Insurance"
+  },
+  {
+    "canonical_name": "National Australia Bank",
+    "common_abbreviations": ["NAB", "National Australia Bank"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "Commonwealth Bank",
+    "common_abbreviations": ["CBA", "Commonwealth Bank", "CommBank"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "Westpac",
+    "common_abbreviations": ["Westpac", "Westpac Banking Corporation"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "ANZ",
+    "common_abbreviations": ["ANZ", "Australia and New Zealand Banking Group", "ANZ Bank"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "HSBC",
+    "common_abbreviations": ["HSBC", "Hong Kong Shanghai Banking Corporation", "HSBC Bank"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "Macquarie Group",
+    "common_abbreviations": ["Macquarie", "Macquarie Bank", "Macquarie Group"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "Citibank",
+    "common_abbreviations": ["Citibank", "Citi", "Citigroup"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "JPMorgan Chase",
+    "common_abbreviations": ["JPMorgan", "JP Morgan", "JPMorgan Chase", "Chase"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "Bank of America",
+    "common_abbreviations": ["Bank of America", "BofA", "BoA"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "Barclays",
+    "common_abbreviations": ["Barclays", "Barclays Bank", "Barclays plc"],
+    "typical_category_l1": "Banks & Finance"
+  },
+  {
+    "canonical_name": "Qantas",
+    "common_abbreviations": ["Qantas", "Qantas Airways", "QF"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Virgin Australia",
+    "common_abbreviations": ["Virgin Australia", "Virgin", "VA"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Flight Centre",
+    "common_abbreviations": ["Flight Centre", "Flight Center", "FCM Travel"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Corporate Traveller",
+    "common_abbreviations": ["Corporate Traveller", "Corporate Traveler"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Hilton",
+    "common_abbreviations": ["Hilton", "Hilton Hotels", "Hilton Worldwide"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Accor",
+    "common_abbreviations": ["Accor", "Accor Hotels", "Novotel", "Mercure", "Ibis"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Marriott",
+    "common_abbreviations": ["Marriott", "Marriott International", "Marriott Hotels"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Hyatt",
+    "common_abbreviations": ["Hyatt", "Hyatt Hotels", "Hyatt Corporation"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "InterContinental Hotels Group",
+    "common_abbreviations": ["IHG", "InterContinental", "Holiday Inn", "Crowne Plaza"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Hertz",
+    "common_abbreviations": ["Hertz", "Hertz Rent a Car", "Hertz Car Rental"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Avis",
+    "common_abbreviations": ["Avis", "Avis Rent a Car", "Avis Budget Group"],
+    "typical_category_l1": "Travel"
+  },
+  {
+    "canonical_name": "Telstra",
+    "common_abbreviations": ["Telstra", "Telstra Corporation"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "Optus",
+    "common_abbreviations": ["Optus", "Singtel Optus"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "TPG Telecom",
+    "common_abbreviations": ["TPG", "TPG Telecom", "TPG Internet"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "Vocus",
+    "common_abbreviations": ["Vocus", "Vocus Communications", "Vocus Group"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "NEC",
+    "common_abbreviations": ["NEC", "NEC Corporation", "NEC Australia"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "Ericsson",
+    "common_abbreviations": ["Ericsson", "Telefonaktiebolaget LM Ericsson"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "Nokia",
+    "common_abbreviations": ["Nokia", "Nokia Corporation", "Nokia Networks"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "Vodafone",
+    "common_abbreviations": ["Vodafone", "Vodafone Australia", "Vodafone Group"],
+    "typical_category_l1": "Telecommunications"
+  },
+  {
+    "canonical_name": "AGL Energy",
+    "common_abbreviations": ["AGL", "AGL Energy", "Australian Gas Light"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Origin Energy",
+    "common_abbreviations": ["Origin", "Origin Energy"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "EnergyAustralia",
+    "common_abbreviations": ["EnergyAustralia", "Energy Australia"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Jemena",
+    "common_abbreviations": ["Jemena", "Jemena Limited"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "AusNet Services",
+    "common_abbreviations": ["AusNet", "AusNet Services"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Ausgrid",
+    "common_abbreviations": ["Ausgrid"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Endeavour Energy",
+    "common_abbreviations": ["Endeavour Energy", "Endeavour"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Worley",
+    "common_abbreviations": ["Worley", "WorleyParsons", "Worley Parsons"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Jacobs",
+    "common_abbreviations": ["Jacobs", "Jacobs Engineering", "Jacobs Group"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "AECOM",
+    "common_abbreviations": ["AECOM", "AECOM Technology Corporation"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Aurecon",
+    "common_abbreviations": ["Aurecon", "Aurecon Group"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "GHD",
+    "common_abbreviations": ["GHD", "Gutteridge Haskins Davey", "GHD Pty Ltd"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Bechtel",
+    "common_abbreviations": ["Bechtel", "Bechtel Corporation"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Fluor",
+    "common_abbreviations": ["Fluor", "Fluor Corporation"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "KBR",
+    "common_abbreviations": ["KBR", "Kellogg Brown & Root", "KBR Inc"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Wood",
+    "common_abbreviations": ["Wood", "Wood Group", "John Wood Group"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Hatch",
+    "common_abbreviations": ["Hatch", "Hatch Ltd"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Hays",
+    "common_abbreviations": ["Hays", "Hays Recruitment", "Hays plc"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Randstad",
+    "common_abbreviations": ["Randstad", "Randstad NV"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Adecco",
+    "common_abbreviations": ["Adecco", "Adecco Group"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Programmed",
+    "common_abbreviations": ["Programmed", "Programmed Maintenance"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Chandler Macleod",
+    "common_abbreviations": ["Chandler Macleod", "Chandler MacLeod", "CMG"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Manpower",
+    "common_abbreviations": ["Manpower", "ManpowerGroup"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Kelly Services",
+    "common_abbreviations": ["Kelly Services", "Kelly"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Robert Half",
+    "common_abbreviations": ["Robert Half", "Robert Half International"],
+    "typical_category_l1": "Labour Hire"
+  },
+  {
+    "canonical_name": "Blackwoods",
+    "common_abbreviations": ["Blackwoods", "Blackwoods Protector"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "Total Tools",
+    "common_abbreviations": ["Total Tools"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "Honeywell",
+    "common_abbreviations": ["Honeywell", "Honeywell International"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "3M",
+    "common_abbreviations": ["3M", "3M Company", "Minnesota Mining and Manufacturing"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "Ansell",
+    "common_abbreviations": ["Ansell", "Ansell Limited"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "MSA Safety",
+    "common_abbreviations": ["MSA", "MSA Safety", "Mine Safety Appliances"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "DuPont Safety",
+    "common_abbreviations": ["DuPont Safety", "Tyvek", "Nomex"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "Grainger",
+    "common_abbreviations": ["Grainger", "WW Grainger"],
+    "typical_category_l1": "Safety & PPE"
+  },
+  {
+    "canonical_name": "Toyota",
+    "common_abbreviations": ["Toyota", "Toyota Motor Corporation"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Hilux",
+    "common_abbreviations": ["Hilux", "Toyota Hilux"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Mitsubishi",
+    "common_abbreviations": ["Mitsubishi", "Mitsubishi Motors"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Isuzu",
+    "common_abbreviations": ["Isuzu", "Isuzu Motors"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Ford",
+    "common_abbreviations": ["Ford", "Ford Motor Company"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Holden",
+    "common_abbreviations": ["Holden", "GM Holden"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Nissan",
+    "common_abbreviations": ["Nissan", "Nissan Motor Company"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Mazda",
+    "common_abbreviations": ["Mazda", "Mazda Motor Corporation"],
+    "typical_category_l1": "Vehicles"
+  },
+  {
+    "canonical_name": "Caterpillar",
+    "common_abbreviations": ["Caterpillar", "CAT", "Caterpillar Inc"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Komatsu",
+    "common_abbreviations": ["Komatsu", "Komatsu Ltd", "Komatsu Australia"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Hitachi Construction",
+    "common_abbreviations": ["Hitachi", "Hitachi Construction Machinery"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Volvo Construction Equipment",
+    "common_abbreviations": ["Volvo CE", "Volvo Construction", "Volvo Construction Equipment"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Sandvik",
+    "common_abbreviations": ["Sandvik", "Sandvik AB", "Sandvik Mining"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Epiroc",
+    "common_abbreviations": ["Epiroc", "Epiroc AB"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Weir Group",
+    "common_abbreviations": ["Weir", "Weir Group", "Weir Minerals"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Metso Outotec",
+    "common_abbreviations": ["Metso", "Outotec", "Metso Outotec"],
+    "typical_category_l1": "Heavy Equipment"
+  },
+  {
+    "canonical_name": "Grant Thornton",
+    "common_abbreviations": ["Grant Thornton", "Grant Thornton International"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "BDO",
+    "common_abbreviations": ["BDO", "BDO International", "Binder Dijker Otte"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "RSM",
+    "common_abbreviations": ["RSM", "RSM International", "RSM Australia"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Slaughter and May",
+    "common_abbreviations": ["Slaughter and May", "Slaughter & May"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Allen & Overy",
+    "common_abbreviations": ["Allen & Overy", "Allen and Overy", "A&O"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Linklaters",
+    "common_abbreviations": ["Linklaters", "Linklaters LLP"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Clifford Chance",
+    "common_abbreviations": ["Clifford Chance", "Clifford Chance LLP"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Freshfields",
+    "common_abbreviations": ["Freshfields", "Freshfields Bruckhaus Deringer"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Baker McKenzie",
+    "common_abbreviations": ["Baker McKenzie", "Baker & McKenzie"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "DLA Piper",
+    "common_abbreviations": ["DLA Piper", "DLA"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Norton Rose Fulbright",
+    "common_abbreviations": ["Norton Rose", "Norton Rose Fulbright", "NRF"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Herbert Smith Freehills",
+    "common_abbreviations": ["Herbert Smith Freehills", "HSF", "Herbert Smith"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Ashurst",
+    "common_abbreviations": ["Ashurst", "Ashurst LLP"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "King & Wood Mallesons",
+    "common_abbreviations": ["KWM", "King & Wood Mallesons", "King Wood Mallesons"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Clayton Utz",
+    "common_abbreviations": ["Clayton Utz"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "MinterEllison",
+    "common_abbreviations": ["MinterEllison", "Minter Ellison"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Allens",
+    "common_abbreviations": ["Allens", "Allens Linklaters"],
+    "typical_category_l1": "Professional Services"
+  },
+  {
+    "canonical_name": "Amazon",
+    "common_abbreviations": ["Amazon", "Amazon.com", "Amazon Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Google",
+    "common_abbreviations": ["Google", "Google Inc", "Alphabet"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Apple",
+    "common_abbreviations": ["Apple", "Apple Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Lenovo",
+    "common_abbreviations": ["Lenovo", "Lenovo Group"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "HP Inc",
+    "common_abbreviations": ["HP", "HP Inc", "Hewlett Packard"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Fujitsu",
+    "common_abbreviations": ["Fujitsu", "Fujitsu Limited"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Red Hat",
+    "common_abbreviations": ["Red Hat", "RedHat", "Red Hat Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Splunk",
+    "common_abbreviations": ["Splunk", "Splunk Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Tableau",
+    "common_abbreviations": ["Tableau", "Tableau Software"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Datadog",
+    "common_abbreviations": ["Datadog", "Datadog Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Snowflake",
+    "common_abbreviations": ["Snowflake", "Snowflake Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "MongoDB",
+    "common_abbreviations": ["MongoDB", "Mongo DB", "MongoDB Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Slack",
+    "common_abbreviations": ["Slack", "Slack Technologies"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Zoom",
+    "common_abbreviations": ["Zoom", "Zoom Video Communications"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Dropbox",
+    "common_abbreviations": ["Dropbox", "Dropbox Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Box",
+    "common_abbreviations": ["Box", "Box Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Okta",
+    "common_abbreviations": ["Okta", "Okta Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Palo Alto Networks",
+    "common_abbreviations": ["Palo Alto", "Palo Alto Networks", "PANW"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "CrowdStrike",
+    "common_abbreviations": ["CrowdStrike", "Crowd Strike"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Fortinet",
+    "common_abbreviations": ["Fortinet", "Fortinet Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Check Point",
+    "common_abbreviations": ["Check Point", "CheckPoint", "Check Point Software"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Symantec",
+    "common_abbreviations": ["Symantec", "Symantec Corporation", "Norton"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "McAfee",
+    "common_abbreviations": ["McAfee", "McAfee LLC"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Trend Micro",
+    "common_abbreviations": ["Trend Micro", "TrendMicro"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Autodesk",
+    "common_abbreviations": ["Autodesk", "Autodesk Inc"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Intuit",
+    "common_abbreviations": ["Intuit", "Intuit Inc", "QuickBooks"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Xero",
+    "common_abbreviations": ["Xero", "Xero Limited"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "MYOB",
+    "common_abbreviations": ["MYOB", "Mind Your Own Business"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Sage",
+    "common_abbreviations": ["Sage", "Sage Group", "Sage Software"],
+    "typical_category_l1": "IT & Software"
+  },
+  {
+    "canonical_name": "Siemens",
+    "common_abbreviations": ["Siemens", "Siemens AG"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "ABB",
+    "common_abbreviations": ["ABB", "ABB Group", "Asea Brown Boveri"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Schneider Electric",
+    "common_abbreviations": ["Schneider", "Schneider Electric"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "General Electric",
+    "common_abbreviations": ["GE", "General Electric", "GE Power"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Emerson",
+    "common_abbreviations": ["Emerson", "Emerson Electric"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Rockwell Automation",
+    "common_abbreviations": ["Rockwell", "Rockwell Automation"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Yokogawa",
+    "common_abbreviations": ["Yokogawa", "Yokogawa Electric"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Endress+Hauser",
+    "common_abbreviations": ["Endress+Hauser", "Endress Hauser", "E+H"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Pentair",
+    "common_abbreviations": ["Pentair", "Pentair plc"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Xylem",
+    "common_abbreviations": ["Xylem", "Xylem Inc"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Veolia",
+    "common_abbreviations": ["Veolia", "Veolia Environment"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Suez",
+    "common_abbreviations": ["Suez", "Suez Environment"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Waste Management",
+    "common_abbreviations": ["Waste Management", "WM", "Waste Management Inc"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Cleanaway",
+    "common_abbreviations": ["Cleanaway", "Cleanaway Waste Management"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Suez Australia",
+    "common_abbreviations": ["Suez Australia", "SUEZ recycling and recovery"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Veolia Australia",
+    "common_abbreviations": ["Veolia Australia", "Veolia Environmental Services"],
+    "typical_category_l1": "Utilities"
+  },
+  {
+    "canonical_name": "Downer",
+    "common_abbreviations": ["Downer", "Downer EDI", "Downer Group"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Lendlease",
+    "common_abbreviations": ["Lendlease", "Lend Lease"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Multiplex",
+    "common_abbreviations": ["Multiplex", "Brookfield Multiplex"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Laing O'Rourke",
+    "common_abbreviations": ["Laing O'Rourke", "Laing ORourke"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "CPB Contractors",
+    "common_abbreviations": ["CPB", "CPB Contractors", "Leighton Contractors"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "John Holland",
+    "common_abbreviations": ["John Holland", "John Holland Group"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Seymour Whyte",
+    "common_abbreviations": ["Seymour Whyte"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Thiess",
+    "common_abbreviations": ["Thiess", "Thiess Pty Ltd"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Monadelphous",
+    "common_abbreviations": ["Monadelphous", "Monadelphous Group"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "UGL",
+    "common_abbreviations": ["UGL", "United Group Limited"],
+    "typical_category_l1": "Engineering"
+  },
+  {
+    "canonical_name": "Spotless",
+    "common_abbreviations": ["Spotless", "Spotless Group"],
+    "typical_category_l1": "Office & Facilities"
+  },
+  {
+    "canonical_name": "Broadspectrum",
+    "common_abbreviations": ["Broadspectrum", "Transfield Services"],
+    "typical_category_l1": "Office & Facilities"
+  }
+]

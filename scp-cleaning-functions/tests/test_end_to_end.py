@@ -136,8 +136,8 @@ def test_learning_state_update():
     """Test learning state update workflow."""
     from update_learning_state import main as update_main
     
-    with patch('update_learning_state.read_sharepoint_json', return_value={}), \
-         patch('update_learning_state.write_sharepoint_json') as mock_write:
+    with patch('shared.sharepoint_helpers.read_config_json', return_value={}), \
+         patch('shared.sharepoint_helpers.write_config_json') as mock_write:
         
         req = Mock()
         req.get_json.return_value = {

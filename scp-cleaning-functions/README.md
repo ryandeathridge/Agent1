@@ -19,8 +19,8 @@ scp-cleaning-functions/
 ├── update_learning_state/        # Function: Update learning dictionaries
 ├── shared/                       # Shared modules
 │   ├── models.py                # Pydantic models
-│   ├── blob_helpers.py          # Azure Blob Storage utilities
-│   ├── sharepoint_helpers.py    # SharePoint integration
+│   ├── blob_helpers.py          # Azure Blob Storage utilities (data files)
+│   ├── sharepoint_helpers.py    # Config blob storage utilities (dictionaries/instructions)
 │   ├── date_normaliser.py       # Date normalization
 │   ├── amount_normaliser.py     # Amount normalization
 │   ├── vendor_matcher.py        # Fuzzy vendor matching
@@ -60,7 +60,7 @@ Formats cleaned data as Excel or CSV with optional changes log and summary sheet
 **Endpoint:** `POST /api/format-output`
 
 ### 6. update-learning-state
-Updates SharePoint-hosted dictionaries and instructions. Makes the agent self-improving over time.
+Updates blob storage-hosted dictionaries and instructions. Makes the agent self-improving over time.
 
 **Endpoint:** `POST /api/update-learning-state`
 
@@ -68,10 +68,11 @@ Updates SharePoint-hosted dictionaries and instructions. Makes the agent self-im
 
 ### Prerequisites
 
-- Python 3.9+
+- Python 3.11
 - Azure Functions Core Tools
-- Azure Storage Account
-- SharePoint site with appropriate permissions
+- Azure Storage Account with two containers:
+  - Data container (for input/output files)
+  - Config container (for dictionaries and instructions)
 
 ### Installation
 
@@ -88,26 +89,39 @@ npm install -g azurite
 
 ### Configuration
 
-1. Copy `local.settings.json` and update with your credentials:
+1. Create or update `local.settings.json` with your credentials:
 
 ```json
 {
   "Values": {
-    "BLOB_CONNECTION_STRING": "<your-blob-connection-string>",
+    "AZURE_STORAGE_CONNECTION_STRING": "<your-storage-connection-string>",
     "BLOB_CONTAINER_NAME": "scp-cleaning",
-    "SHAREPOINT_TENANT_ID": "<your-tenant-id>",
-    "SHAREPOINT_CLIENT_ID": "<your-client-id>",
-    "SHAREPOINT_CLIENT_SECRET": "<your-client-secret>",
-    "SHAREPOINT_SITE_ID": "<your-site-id>"
+    "CONFIG_CONTAINER_NAME": "config"
   }
 }
 ```
 
-2. Create SharePoint files:
-   - `SCP/vendor_dictionary.json` (empty `{}` to start)
-   - `SCP/abbreviation_dictionary.json` (seeded with common abbreviations)
-   - `SCP/few_shot_examples.json` (empty `[]` to start)
-   - `SCP/agent_instructions.md` (agent instructions)
+2. Upload seed config files to blob storage:
+
+```bash
+# Create the config container
+az storage container create \
+  --name config \
+  --connection-string "<your-connection-string>"
+
+# Upload seed files
+az storage blob upload-batch \
+  --account-name <storage-account-name> \
+  --destination config \
+  --source ./config \
+  --overwrite
+```
+
+The seed files include:
+   - `vendor_dictionary.json` (empty `{}` to start)
+   - `abbreviation_dictionary.json` (empty `{}` to start)
+   - `few_shot_examples.json` (empty `[]` to start)
+   - `agent_instructions.md` (agent instructions template)
 
 ## Running Locally
 
@@ -136,6 +150,8 @@ pytest tests/test_end_to_end.py -v -m integration
 
 ## Deployment
 
+### Manual Deployment
+
 ```bash
 # Deploy to Azure
 func azure functionapp publish <function-app-name> --python
@@ -145,13 +161,17 @@ az functionapp config appsettings set \
   --name <app-name> \
   --resource-group <rg> \
   --settings \
-    BLOB_CONNECTION_STRING="<conn>" \
+    AZURE_STORAGE_CONNECTION_STRING="<conn>" \
     BLOB_CONTAINER_NAME="scp-cleaning" \
-    SHAREPOINT_TENANT_ID="<tid>" \
-    SHAREPOINT_CLIENT_ID="<cid>" \
-    SHAREPOINT_CLIENT_SECRET="<secret>" \
-    SHAREPOINT_SITE_ID="<sid>"
+    CONFIG_CONTAINER_NAME="config"
 ```
+
+### CI/CD Deployment
+
+A GitHub Actions workflow is included at `.github/workflows/deploy.yml` that automatically deploys the function app on push to `main`. Configure the following secrets in your GitHub repository:
+
+- `AZURE_FUNCTIONAPP_NAME`: Name of your Azure Function App
+- `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`: Publish profile XML (download from Azure Portal)
 
 ## Copilot Studio Integration
 
@@ -167,15 +187,18 @@ This implementation follows a modular, self-improving architecture:
 
 1. **Deterministic Cleaning**: Rule-based cleaning handles 80%+ of records automatically
 2. **LLM Reasoning**: Copilot Studio LLM handles ambiguous cases flagged by deterministic cleaning
-3. **Self-Learning**: Each run updates dictionaries and examples, improving future performance
+3. **Self-Learning**: Each run updates blob-stored dictionaries and examples, improving future performance
 4. **Provenance Tracking**: All changes are logged with confidence scores and methods
+5. **Chunked Processing**: Large datasets (up to 1M rows) are processed in 50K row chunks to stay within Azure Functions timeout limits
 
 ## Performance
 
 - Profile 50K rows: <10 seconds
-- Clean 50K rows: <120 seconds
+- Clean 50K rows: <120 seconds (chunked processing for datasets up to 1M rows)
 - Validate 50K rows: <30 seconds
 - Format to Excel: <20 seconds
+
+**Note**: For datasets larger than 50K rows, the clean-deterministic function automatically chunks the data into batches of 50K rows and processes them sequentially to stay within Azure Functions HTTP timeout limits (230 seconds).
 
 ## License
 

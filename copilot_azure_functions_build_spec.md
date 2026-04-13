@@ -1,5 +1,7 @@
 # SCP Data Cleaning Agent — Azure Functions Build Specification
 
+> **⚠️ OUTDATED:** This document describes the original SharePoint-based architecture. The implementation has been migrated to use Azure Blob Storage exclusively. See the updated README.md in `scp-cleaning-functions/` for current architecture.
+>
 > **Purpose:** This document specifies every Python script needed to implement the data cleaning agent within Microsoft Copilot Studio + Azure Functions. A coding agent should be able to read this file and build all scripts without further guidance.
 >
 > **Context:** Read the full architecture at the Notion page: [Agent 1 — Copilot Studio Implementation](https://www.notion.so/33eb53e2bf25818c8e7ad0f36add94df). Read the ideal architecture for background: [Agent 1 — Data Cleaning Architecture](https://www.notion.so/33eb53e2bf2581a497afdf6e11276994).
